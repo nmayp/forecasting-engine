@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "forecasting-engine"
+version = "0.1.0"
+description = "Forecasting lab for public data layers, cascade benchmark and what-if engine"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26", "pandas>=2.1", "scipy>=1.11", "scikit-learn>=1.3", "pyarrow>=14", "requests>=2.31",
+    "lxml>=4.9", "openpyxl>=3.1", "xlrd>=2.0", "holidays>=0.40", "statsmodels>=0.14", "joblib>=1.3",
+]
+
+[project.optional-dependencies]
+models = ["torch", "chronos-forecasting", "tigramite", "datasets"]
+test = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["forecasting_engine*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.json", "*.csv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

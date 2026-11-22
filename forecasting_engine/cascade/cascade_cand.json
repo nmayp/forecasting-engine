@@ -1,0 +1,332 @@
+{
+ "air_d": [
+  {
+   "variant": "own+weather",
+   "groups": [
+    "weather"
+   ],
+   "audit_skill": 0.2118
+  },
+  {
+   "variant": "own+cyber",
+   "groups": [
+    "cyber"
+   ],
+   "audit_skill": 0.1932
+  }
+ ],
+ "aq_d": [
+  {
+   "variant": "own+health",
+   "groups": [
+    "environment",
+    "health",
+    "weather"
+   ],
+   "audit_skill": 0.2411
+  },
+  {
+   "variant": "own+transport",
+   "groups": [
+    "environment",
+    "transport",
+    "weather"
+   ],
+   "audit_skill": 0.2374
+  }
+ ],
+ "commod_d": [
+  {
+   "variant": "own+energy",
+   "groups": [
+    "energy",
+    "markets"
+   ],
+   "audit_skill": 0.0185
+  },
+  {
+   "variant": "all",
+   "groups": [
+    "cyber",
+    "economy",
+    "energy",
+    "fuel",
+    "health",
+    "markets",
+    "society"
+   ],
+   "audit_skill": 0.0008
+  }
+ ],
+ "diesel_w": [
+  {
+   "variant": "own+economy",
+   "groups": [
+    "economy",
+    "fuel"
+   ],
+   "audit_skill": 0.0542
+  },
+  {
+   "variant": "own",
+   "groups": [
+    "fuel"
+   ],
+   "audit_skill": 0.0525
+  }
+ ],
+ "fx_d": [
+  {
+   "variant": "own+economy",
+   "groups": [
+    "economy",
+    "markets"
+   ],
+   "audit_skill": -0.0019
+  },
+  {
+   "variant": "own+society",
+   "groups": [
+    "markets",
+    "society"
+   ],
+   "audit_skill": -0.0066
+  }
+ ],
+ "gasoline_w": [
+  {
+   "variant": "all",
+   "groups": [
+    "cyber",
+    "economy",
+    "energy",
+    "fuel",
+    "health",
+    "markets",
+    "policy",
+    "society"
+   ],
+   "audit_skill": -0.0319
+  },
+  {
+   "variant": "own+markets",
+   "groups": [
+    "fuel",
+    "markets"
+   ],
+   "audit_skill": -0.0325
+  }
+ ],
+ "hicp_m": [
+  {
+   "variant": "own+health",
+   "groups": [
+    "economy",
+    "health"
+   ],
+   "audit_skill": 0.1165
+  },
+  {
+   "variant": "own+society",
+   "groups": [
+    "economy",
+    "society"
+   ],
+   "audit_skill": 0.1119
+  }
+ ],
+ "ip_m": [
+  {
+   "variant": "own+markets",
+   "groups": [
+    "economy",
+    "markets"
+   ],
+   "audit_skill": 0.0088
+  },
+  {
+   "variant": "own+society",
+   "groups": [
+    "economy",
+    "society"
+   ],
+   "audit_skill": -0.0048
+  }
+ ],
+ "load_d": [
+  {
+   "variant": "own+network+chain",
+   "groups": [
+    "chain",
+    "energy",
+    "network",
+    "weather"
+   ],
+   "audit_skill": 0.2945
+  },
+  {
+   "variant": "own+cyber",
+   "groups": [
+    "cyber",
+    "energy",
+    "weather"
+   ],
+   "audit_skill": 0.2942
+  }
+ ],
+ "ports_m": [
+  {
+   "variant": "own+health",
+   "groups": [
+    "health",
+    "trade"
+   ],
+   "audit_skill": 0.0699
+  },
+  {
+   "variant": "own+economy",
+   "groups": [
+    "economy",
+    "trade"
+   ],
+   "audit_skill": 0.06
+  }
+ ],
+ "price_h": [
+  {
+   "variant": "own",
+   "groups": [
+    "energy",
+    "weather"
+   ],
+   "audit_skill": 0.3317
+  },
+  {
+   "variant": "own+cyber",
+   "groups": [
+    "cyber",
+    "energy",
+    "weather"
+   ],
+   "audit_skill": 0.3301
+  }
+ ],
+ "retail_m": [
+  {
+   "variant": "own+society",
+   "groups": [
+    "economy",
+    "society"
+   ],
+   "audit_skill": 0.1883
+  },
+  {
+   "variant": "own",
+   "groups": [
+    "economy"
+   ],
+   "audit_skill": 0.1858
+  }
+ ],
+ "security_w": [
+  {
+   "variant": "own+markets",
+   "groups": [
+    "markets",
+    "society"
+   ],
+   "audit_skill": 0.217
+  },
+  {
+   "variant": "own+health",
+   "groups": [
+    "health",
+    "society"
+   ],
+   "audit_skill": 0.2087
+  }
+ ],
+ "tourism_m": [
+  {
+   "variant": "all",
+   "groups": [
+    "chain",
+    "cyber",
+    "economy",
+    "fuel",
+    "health",
+    "markets",
+    "security",
+    "society",
+    "tourism",
+    "transport",
+    "weather"
+   ],
+   "audit_skill": 0.0616
+  },
+  {
+   "variant": "own+transport",
+   "groups": [
+    "tourism",
+    "transport"
+   ],
+   "audit_skill": 0.0527
+  }
+ ],
+ "unemp_m": [
+  {
+   "variant": "own+markets",
+   "groups": [
+    "economy",
+    "markets"
+   ],
+   "audit_skill": -0.01
+  },
+  {
+   "variant": "own+health",
+   "groups": [
+    "economy",
+    "health"
+   ],
+   "audit_skill": -0.0123
+  }
+ ],
+ "unrest_w": [
+  {
+   "variant": "own+health",
+   "groups": [
+    "health",
+    "society"
+   ],
+   "audit_skill": 0.2007
+  },
+  {
+   "variant": "own+markets",
+   "groups": [
+    "markets",
+    "society"
+   ],
+   "audit_skill": 0.197
+  }
+ ],
+ "wildfire_w": [
+  {
+   "variant": "own+water",
+   "groups": [
+    "environment",
+    "water",
+    "weather"
+   ],
+   "audit_skill": 0.0504
+  },
+  {
+   "variant": "own+society",
+   "groups": [
+    "environment",
+    "society",
+    "weather"
+   ],
+   "audit_skill": 0.0503
+  }
+ ]
+}

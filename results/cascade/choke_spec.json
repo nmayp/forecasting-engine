@@ -1,0 +1,40 @@
+{
+ "frozen": "2026-10-22, after the development run (choke_scores_dev.json) and before the check cells (Red Sea, onset 2023-12-11) were built, predicted or scored. Disclosure: before the freeze I printed check-period VALUES while building the data (weekly WCI composite and Shanghai-Rotterdam prints to Aug 2024 when testing the scraper; monthly import-price, HICP, PPI-freight and GSCPI columns Sep 2023 - Dec 2024 in a data audit; weekly Suez / Bab el-Mandeb / Cape / Panama container transits Nov 2023 - Feb 2024), and I know the Red Sea outcome from general knowledge. No check prediction was compared with an outcome before this freeze; all parameters below come from development data, published pre-event literature or physical route arithmetic, and the check was not used to choose them.",
+ "events_dev": ["ever_given 2021-03-22", "crunch_2021 2021-05-03 (negative control)", "blacksea_2022 2022-02-21", "panama_2023 2023-06-05"],
+ "events_check": ["redsea 2023-12-11"],
+ "L1": {
+  "input": "transit-reduction path at the chokepoint: weekly mean container transits (PortWatch n_container), d_t = 1 - transits_t / mean of the 26 weeks before the onset week, clipped to [0,1]",
+  "mechanism": "K_t = e * phi * EWMA_{a=0.5}(d_t); ln(R_t/R_0) = beta * K_t; R_0 = mean of the last two prints before the onset week",
+  "beta": 10.0, "beta_source": "log rate rise per unit of effective capacity absorbed: about 10 % of the global fleet absorbed by congestion in 2021-22 (Carson/Splash247 Jul 2021; Linerlytica Feb 2022, 2.53m TEU = 10 %) with WCI composite x3 to x7 on 2019; not fitted, no development event has an exposed container lane",
+  "phi": {"suez": 0.21, "panama": 0.15}, "phi_source": "extra days of the diversion over an ~84-day Asia-Europe round trip: +11 days each way (OECD: journey times +30-45 %) gives 1 - 84/106 = 0.21; Panama alternatives +15 % (assumed)",
+  "exposure": {"wci_rtm": {"suez": 1.0, "panama": 0.0}, "wci": {"suez": 0.35, "panama": 0.05}, "scfi": {"suez": 0.25, "panama": 0.10}}, "exposure_note": "the Shanghai-Rotterdam lane is the Asia-Europe lane itself; the composite shares are assumed (two of eight WCI routes are Asia-Europe, volume-weighted), not measured",
+  "check_cells": "wci_rtm and wci, each over the first 26 weeks and the first 52 weeks from the onset week (4 cells, one event)",
+  "engine_off": "no change from R_0",
+  "others": "Chronos-2 and TiRex-2 on the last 156 weekly log prints before the onset (no transit information)",
+  "moved": "|window mean of ln(R_t/R_0)| >= 0.15",
+  "pass": {"skill": "pooled MAE below engine-off AND below the better of Chronos-2 / TiRex-2", "direction": ">= 0.80 of moved cells (at least 2 moved)", "size": "median predicted/realised window mean 0.8-1.25", "timing": "median |offset| of the 3-week-smoothed extremum <= 4 weeks"}
+ },
+ "L2": {
+  "input": "REALISED monthly freight index (lnF: SCFI composite to 2023-03, WCI composite changes after) given; origin = last import-price month public on the onset date (month + 35 days); F_0 = mean ln F of the 3 months before the onset month",
+  "M1": "ln(P_t/P_0) = eps * sum_{k=0..6} w_k (ln F_{t-k} - ln F_0), w_k ~ exp(-k/2); eps = 0.065 (a doubling of container freight raises import prices 4.4-4.9 %: OECD 2021a, UNCTAD 2021, Carriere-Swallow et al. 2021; all before the Red Sea event). Import prices are CIF (STS regulation), so freight enters directly",
+  "M2": "eps and tau by least squares on development months 2010-02 to 2023-11 (excluding the held-out event window, onset-3 to end+12 months) with the EUR/USD change as control; eps clipped to [0, 0.3]. Reported as a rescue",
+  "targets": "PRC_IMP_NEU (imports from outside the euro area), EA20: consumer goods excluding food (CPA_MIG_COG_X_FOOD) and intermediate goods (CPA_MIG_ING)",
+  "check_cells": "2 targets x one window (origin+1 to 2024-12)",
+  "engine_off": "no change from P_0", "others": "Chronos-2, TiRex-2 on the last 96 monthly log values",
+  "moved": "|window mean| >= 0.015",
+  "pass": {"skill": "as L1", "direction": "as L1", "size": "0.8-1.25", "timing": "median |offset| <= 2 months"}
+ },
+ "L3": {
+  "input": "REALISED consumer-goods import prices (monthly) given; origin = last HICP month public on the onset date (month + 17 days)",
+  "M1": "ln(H_t/H_0) = eta * sum_{k=0..12} v_k (ln P_{t-k} - ln P_0) + seasonal path; v gamma-shaped, mean lag 6 months; eta = 0.25 (OECD / UNCTAD: consumer prices +0.4-0.7 % per doubling of freight against +4.4-4.9 % for import prices, goods about 2.5x as import-intensive as the basket)",
+  "M2": "eta and mean lag (4,6,8,10) by least squares on development months, month dummies, eta clipped to [0, 0.6]",
+  "target": "HICP non-energy industrial goods (IGD_NNRG), euro area, index NSA; seasonal factors = centred mean m/m by calendar month over 8 years to the origin, removed from the realised path",
+  "check_cells": "one window, origin+1 to 2025-06 (HICP EA series ends 2025-12)",
+  "engine_off": "seasonal path only (flat level)", "others": "Chronos-2, TiRex-2 on the last 96 monthly log values, net of the seasonal path",
+  "moved": "|window mean| >= 0.010",
+  "pass": {"skill": "as L1", "direction": "as L1", "size": "0.8-1.25", "timing": "median |offset| <= 3 months"}
+ },
+ "identification": "a cell is 'detectable' if |realised window mean| > 2 SD of the same statistic over placebo windows of the same length in 2012-2019 (SCFI weekly for L1, import prices and HICP monthly for L2/L3). The chain is cut at the first link whose check cells are not detectable or fail direction.",
+ "chain": "transits -> L1 (composite WCI, e=0.35) -> monthly mean -> L2 M1 (consumer goods) -> L3 M1, predicted inputs all the way; reported against realised at each stage, no pass rules of its own",
+ "overall": "a link passes only if all four rules pass on the pooled check cells; M1 is primary, M2 reported as a rescue. Lab gate: tried only if a link passes its own check rules."
+}

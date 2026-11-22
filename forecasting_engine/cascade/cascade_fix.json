@@ -1,0 +1,10 @@
+{
+ "hicp_m": {
+  "groups": [
+   "economy",
+   "health"
+  ],
+  "variant": "own+health",
+  "gain": 0.0928
+ }
+}

@@ -1,0 +1,200 @@
+{
+ "name": "strike_air",
+ "as_of": "2026-10-22",
+ "k": 1.0,
+ "catchup_u": 0.0,
+ "cap": 0.98,
+ "ratio_realised_over_predicted": {
+  "announced": {
+   "p10": 0.654,
+   "p50": 0.865,
+   "p90": 1.115,
+   "n": 13
+  },
+  "estimate": {
+   "p10": 0.72,
+   "p50": 1.082,
+   "p90": 1.534,
+   "n": 20
+  }
+ },
+ "backtest": {
+  "dev": {
+   "n": 11,
+   "moved": 10,
+   "size_median": 0.85,
+   "within20": 0.4,
+   "skill_vs_engine_off": 0.112
+  },
+  "check": {
+   "n": 14,
+   "moved": 10,
+   "size_median": 1.04,
+   "within20": 0.4,
+   "skill_vs_engine_off": 0.157,
+   "cells_beating_off": 13
+  }
+ },
+ "cells": [
+  {
+   "event": "fr_atc_2018_03",
+   "cc": "FR",
+   "basis": "announced",
+   "verified": "partly",
+   "split": "development",
+   "realised_over_predicted": 1.0203803127965552
+  },
+  {
+   "event": "fr_atc_2019_05",
+   "cc": "FR",
+   "basis": "class",
+   "verified": "partly",
+   "split": "development",
+   "realised_over_predicted": 1.4972315184006735
+  },
+  {
+   "event": "fr_pension_2019",
+   "cc": "FR",
+   "basis": "announced",
+   "verified": "partly",
+   "split": "development",
+   "realised_over_predicted": 1.3615570345404673
+  },
+  {
+   "event": "fr_pension_2023",
+   "cc": "FR",
+   "basis": "announced",
+   "verified": "yes",
+   "split": "development",
+   "realised_over_predicted": 0.7353159109385596
+  },
+  {
+   "event": "fr_pension_2023",
+   "cc": "FR",
+   "basis": "announced",
+   "verified": "yes",
+   "split": "development",
+   "realised_over_predicted": 0.7314467744012817
+  },
+  {
+   "event": "fr_pension_2023",
+   "cc": "FR",
+   "basis": "announced",
+   "verified": "yes",
+   "split": "development",
+   "realised_over_predicted": 0.8868858021988804
+  },
+  {
+   "event": "be_national_2019_02",
+   "cc": "BE",
+   "basis": "class",
+   "verified": "partly",
+   "split": "development",
+   "realised_over_predicted": 1.2603668496569294
+  },
+  {
+   "event": "be_national_2022_11",
+   "cc": "BE",
+   "basis": "class",
+   "verified": "no",
+   "split": "development",
+   "realised_over_predicted": 1.44251386815477
+  },
+  {
+   "event": "de_verdi_2023_02",
+   "cc": "DE",
+   "basis": "announced",
+   "verified": "yes",
+   "split": "development",
+   "realised_over_predicted": 1.121087812395757
+  },
+  {
+   "event": "de_mega_2023_03",
+   "cc": "DE",
+   "basis": "class",
+   "verified": "partly",
+   "split": "development",
+   "realised_over_predicted": 1.2241976984002607
+  },
+  {
+   "event": "de_lufthansa_2024",
+   "cc": "DE",
+   "basis": "announced",
+   "verified": "partly",
+   "split": "check",
+   "realised_over_predicted": 0.7298117482858846
+  },
+  {
+   "event": "fr_atc_2024",
+   "cc": "FR",
+   "basis": "class",
+   "verified": "partly",
+   "split": "check",
+   "realised_over_predicted": 1.8611827672562062
+  },
+  {
+   "event": "fr_atc_2024",
+   "cc": "FR",
+   "basis": "class",
+   "verified": "partly",
+   "split": "check",
+   "realised_over_predicted": 1.2218239804745448
+  },
+  {
+   "event": "fr_atc_2025_07",
+   "cc": "FR",
+   "basis": "announced",
+   "verified": "yes",
+   "split": "check",
+   "realised_over_predicted": 1.0737043410823663
+  },
+  {
+   "event": "be_national_2025",
+   "cc": "BE",
+   "basis": "announced",
+   "verified": "yes",
+   "split": "check",
+   "realised_over_predicted": 0.8652314492686888
+  },
+  {
+   "event": "be_national_2025",
+   "cc": "BE",
+   "basis": "announced",
+   "verified": "yes",
+   "split": "check",
+   "realised_over_predicted": 1.0905237239233077
+  },
+  {
+   "event": "be_national_2025",
+   "cc": "BE",
+   "basis": "announced",
+   "verified": "yes",
+   "split": "check",
+   "realised_over_predicted": 0.6356287430811317
+  },
+  {
+   "event": "be_national_2025",
+   "cc": "BE",
+   "basis": "announced",
+   "verified": "yes",
+   "split": "check",
+   "realised_over_predicted": 0.6119310411929959
+  },
+  {
+   "event": "be_national_2025",
+   "cc": "BE",
+   "basis": "announced",
+   "verified": "yes",
+   "split": "check",
+   "realised_over_predicted": 0.7356467748776104
+  },
+  {
+   "event": "pt_general_2025_12",
+   "cc": "PT",
+   "basis": "class",
+   "verified": "no",
+   "split": "check",
+   "realised_over_predicted": 2.3464449945275074
+  }
+ ]
+}

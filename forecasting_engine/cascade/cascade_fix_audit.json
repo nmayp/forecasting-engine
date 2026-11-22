@@ -1,0 +1,22 @@
+{
+ "air_d": {
+  "groups": [],
+  "variant": "own",
+  "gain": 0.0773
+ },
+ "hicp_m": {
+  "groups": [
+   "economy",
+   "health"
+  ],
+  "variant": "own+health",
+  "gain": 0.0928
+ },
+ "retail_m": {
+  "groups": [
+   "economy"
+  ],
+  "variant": "own",
+  "gain": 0.0139
+ }
+}

@@ -1,0 +1,1052 @@
+{
+ "note": "The champion of each layer on the locked holdout, as recorded in results/lab/trials.jsonl. Weights are rules (see grammar), not stored constants.",
+ "grammar": {
+  "blend:a|b": "the mean of the members' forecasts",
+  "median:a|b": "the per-point median of the members' forecasts",
+  "trimN:a|b": "the mean after dropping the N members with the worst recent errors (default 1)",
+  "adapt:a|b": "a mean weighted by each member's recent errors, using only forecasts whose outcomes were already known (latest 12)",
+  "rgd:m / rg:m": "the method with regime features (rgd: every driver's regime, rg: own and cross-series)",
+  "anchor-x:m": "the method learns corrections to the forecast of x (a foundation model or driver)",
+  "recon:m": "reconciled with the hourly sibling's chained forecast",
+  "xcovid:m": "the method with the 2020-21 period handled separately",
+  "gbm_*": "gradient-boosted trees; the name lists the driver layers used (gbm_only-energy+weather) and the size (_big, _xl)",
+  "chronos2 / chronos2x / toto2 / toto2x / tirex2 / tirex2x / tirex2c / flowstate / timesfm25": "open foundation models as members; x = with cross-series context, c = with covariates",
+  "ref / naive / seasonal": "the strict reference: the better of 'no change' and 'same as last season'"
+ },
+ "layers": [
+  {
+   "family": "price_h",
+   "label": "Day-ahead electricity price",
+   "layer": "energy",
+   "champion": "adapt:gbm_only-energy+weather_big|gbm_only-energy+weather+network+chain_big|chronos2",
+   "members": [
+    "gbm_only-energy+weather_big",
+    "gbm_only-energy+weather+network+chain_big",
+    "chronos2"
+   ],
+   "round": "36",
+   "utc": "2026-10-19T02:38:25Z",
+   "dev_skill": 0.4279,
+   "holdout_skill": 0.4049,
+   "holdout_looks": 11
+  },
+  {
+   "family": "load_h",
+   "label": "Electricity demand (actual load)",
+   "layer": "energy",
+   "champion": "blend:gbm_only-energy+weather+health_xl|anchor-load_da:gbm_only-energy+weather+health+network_xl",
+   "members": [
+    "gbm_only-energy+weather+health_xl",
+    "anchor-load_da:gbm_only-energy+weather+health+network_xl"
+   ],
+   "round": "19",
+   "utc": "2026-10-18T20:04:32Z",
+   "dev_skill": 0.472,
+   "holdout_skill": 0.5189,
+   "holdout_looks": 10
+  },
+  {
+   "family": "res_h",
+   "label": "Wind and solar share of generation",
+   "layer": "energy",
+   "champion": "gbm_only-energy+weather+network_xl_y",
+   "members": [
+    "gbm_only-energy+weather+network_xl_y"
+   ],
+   "round": "11",
+   "utc": "2026-10-18T13:42:29Z",
+   "dev_skill": 0.4046,
+   "holdout_skill": 0.5581,
+   "holdout_looks": 10
+  },
+  {
+   "family": "load_d",
+   "label": "Electricity demand, daily mean",
+   "layer": "energy",
+   "champion": "heat_load_blend",
+   "members": [
+    "heat_load_blend"
+   ],
+   "round": "heat_load_v2",
+   "utc": "2026-10-21T21:46:07Z",
+   "dev_skill": 0.3814,
+   "holdout_skill": 0.3751,
+   "holdout_looks": 12
+  },
+  {
+   "family": "diesel_w",
+   "label": "Diesel pump price",
+   "layer": "fuel",
+   "champion": "pump_hybrid_blend_x4",
+   "members": [
+    "pump_hybrid_blend_x4"
+   ],
+   "round": "x4",
+   "utc": "2026-10-22T08:23:18Z",
+   "dev_skill": 0.045,
+   "holdout_skill": 0.0584,
+   "holdout_looks": 17
+  },
+  {
+   "family": "gasoline_w",
+   "label": "Petrol (95) pump price",
+   "layer": "fuel",
+   "champion": "pump_hybrid_blend",
+   "members": [
+    "pump_hybrid_blend"
+   ],
+   "round": "pump-hybrid",
+   "utc": "2026-10-21T12:59:27Z",
+   "dev_skill": 0.0746,
+   "holdout_skill": 0.053,
+   "holdout_looks": 12
+  },
+  {
+   "family": "ip_m",
+   "label": "Industrial production",
+   "layer": "economy",
+   "champion": "adapt:toto2x|flowstate|chronos2x|anchor-toto2x:gbm_all_reg",
+   "members": [
+    "toto2x",
+    "flowstate",
+    "chronos2x",
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "x3",
+   "utc": "2026-10-20T09:39:47Z",
+   "dev_skill": 0.1,
+   "holdout_skill": 0.0767,
+   "holdout_looks": 20
+  },
+  {
+   "family": "retail_m",
+   "label": "Retail trade volume",
+   "layer": "economy",
+   "champion": "blend:flowstate|toto2x|anchor-toto2x:gbm_all_reg",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "70",
+   "utc": "2026-10-19T18:27:45Z",
+   "dev_skill": 0.1532,
+   "holdout_skill": 0.1616,
+   "holdout_looks": 13
+  },
+  {
+   "family": "unemp_m",
+   "label": "Unemployment rate",
+   "layer": "economy",
+   "champion": "anchor-toto2x:gbm_all_reg",
+   "members": [
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "x3",
+   "utc": "2026-10-20T08:36:01Z",
+   "dev_skill": 0.1906,
+   "holdout_skill": 0.1214,
+   "holdout_looks": 25
+  },
+  {
+   "family": "hicp_m",
+   "label": "Consumer price inflation (HICP, y/y)",
+   "layer": "economy",
+   "champion": "food_chain_blend",
+   "members": [
+    "food_chain_blend"
+   ],
+   "round": "food-chain",
+   "utc": "2026-10-21T14:12:24Z",
+   "dev_skill": 0.1098,
+   "holdout_skill": 0.3544,
+   "holdout_looks": 17
+  },
+  {
+   "family": "fx_d",
+   "label": "Euro exchange rates (ECB reference)",
+   "layer": "markets",
+   "champion": "shock30w3[chronos2|toto2x|tirex2x]:gbm_all_reg_y_half",
+   "members": [
+    "shock30w3[chronos2",
+    "toto2x",
+    "tirex2x]:gbm_all_reg_y_half"
+   ],
+   "round": "s1",
+   "utc": "2026-10-20T05:57:14Z",
+   "dev_skill": -0.0011,
+   "holdout_skill": 0.0078,
+   "holdout_looks": 9
+  },
+  {
+   "family": "commod_d",
+   "label": "Oil and gas prices in euros",
+   "layer": "markets",
+   "champion": "blend:chronos2|toto2x|tirex2x|tirex2c|anchor-chronos2:gbm_only-energy+fuel_reg",
+   "members": [
+    "chronos2",
+    "toto2x",
+    "tirex2x",
+    "tirex2c",
+    "anchor-chronos2:gbm_only-energy+fuel_reg"
+   ],
+   "round": "n3",
+   "utc": "2026-10-20T01:29:01Z",
+   "dev_skill": 0.001,
+   "holdout_skill": 0.001,
+   "holdout_looks": 21
+  },
+  {
+   "family": "unrest_w",
+   "label": "Strikes and protests in the news (GDELT events per week)",
+   "layer": "society",
+   "champion": "blend:chronos2|toto2x|flowstate|anchor-chronos2:gbm_all_reg",
+   "members": [
+    "chronos2",
+    "toto2x",
+    "flowstate",
+    "anchor-chronos2:gbm_all_reg"
+   ],
+   "round": "x2",
+   "utc": "2026-10-22T02:24:39Z",
+   "dev_skill": 0.3065,
+   "holdout_skill": 0.3233,
+   "holdout_looks": 29
+  },
+  {
+   "family": "kev_d",
+   "label": "New exploited vulnerabilities (CISA KEV)",
+   "layer": "cyber",
+   "champion": "anchor-chronos2:gbm_all_reg",
+   "members": [
+    "anchor-chronos2:gbm_all_reg"
+   ],
+   "round": "s1lag-judge",
+   "utc": "2026-10-20T11:33:40Z",
+   "dev_skill": 0.3603,
+   "holdout_skill": 0.3528,
+   "holdout_looks": 16
+  },
+  {
+   "family": "cpi_long_m",
+   "label": "Consumer price inflation, OECD countries since 1960",
+   "layer": "economy",
+   "champion": "blend:toto2x|anchor-toto2x:gbm_only-economy+trade+markets_reg",
+   "members": [
+    "toto2x",
+    "anchor-toto2x:gbm_only-economy+trade+markets_reg"
+   ],
+   "round": "x4b",
+   "utc": "2026-10-22T08:23:43Z",
+   "dev_skill": 0.1876,
+   "holdout_skill": 0.2498,
+   "holdout_looks": 10
+  },
+  {
+   "family": "ip_long_m",
+   "label": "Industrial production, OECD countries since 1955",
+   "layer": "economy",
+   "champion": "anchor-toto2x:gbm_only-linkgraph+economy_reg",
+   "members": [
+    "anchor-toto2x:gbm_only-linkgraph+economy_reg"
+   ],
+   "round": "lk3",
+   "utc": "2026-10-24T09:37:05Z",
+   "dev_skill": 0.1566,
+   "holdout_skill": 0.0752,
+   "holdout_looks": 12
+  },
+  {
+   "family": "ur_long_m",
+   "label": "Unemployment rate, OECD countries since 1955",
+   "layer": "economy",
+   "champion": "anchor-toto2x:gbm_only-linkgraph+economy_reg",
+   "members": [
+    "anchor-toto2x:gbm_only-linkgraph+economy_reg"
+   ],
+   "round": "lk1",
+   "utc": "2026-10-24T00:19:13Z",
+   "dev_skill": 0.1848,
+   "holdout_skill": 0.1053,
+   "holdout_looks": 10
+  },
+  {
+   "family": "ports_m",
+   "label": "Port cargo, Spain's 29 port authorities",
+   "layer": "trade",
+   "champion": "blend:chronos2x|flowstate|toto2x|anchor-chronos:gbm_all_cs",
+   "members": [
+    "chronos2x",
+    "flowstate",
+    "toto2x",
+    "anchor-chronos:gbm_all_cs"
+   ],
+   "round": "x3",
+   "utc": "2026-10-20T09:46:45Z",
+   "dev_skill": 0.2231,
+   "holdout_skill": 0.2486,
+   "holdout_looks": 15
+  },
+  {
+   "family": "health_w",
+   "label": "Respiratory illness (ILI / ARI consultation rate, ECDC ERVISS)",
+   "layer": "health",
+   "champion": "adapt:flowstate|toto2x|chronos2x|tirex2x",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "chronos2x",
+    "tirex2x"
+   ],
+   "round": "70",
+   "utc": "2026-10-19T18:24:26Z",
+   "dev_skill": 0.2387,
+   "holdout_skill": 0.3264,
+   "holdout_looks": 30
+  },
+  {
+   "family": "air_d",
+   "label": "Air traffic: daily IFR flights per country (EUROCONTROL)",
+   "layer": "transport",
+   "champion": "adapt:gbm_own_big|gbm_all_big",
+   "members": [
+    "gbm_own_big",
+    "gbm_all_big"
+   ],
+   "round": "17",
+   "utc": "2026-10-18T18:10:27Z",
+   "dev_skill": 0.1133,
+   "holdout_skill": 0.4436,
+   "holdout_looks": 8
+  },
+  {
+   "family": "security_w",
+   "label": "Security: violence and coercion events in the news (GDELT, per week)",
+   "layer": "society",
+   "champion": "blend:blend:chronos2|flowstate|anchor-chronos2:gbm_all_reg|toto2x",
+   "members": [
+    "blend:chronos2",
+    "flowstate",
+    "anchor-chronos2:gbm_all_reg",
+    "toto2x"
+   ],
+   "round": "rb1",
+   "utc": "2026-10-20T15:14:37Z",
+   "dev_skill": 0.2441,
+   "holdout_skill": 0.2707,
+   "holdout_looks": 22
+  },
+  {
+   "family": "info_w",
+   "label": "Information climate: average tone of news events (GDELT, per week)",
+   "layer": "society",
+   "champion": "blend:blend:chronos2|chronos2x|toto2x",
+   "members": [
+    "blend:chronos2",
+    "chronos2x",
+    "toto2x"
+   ],
+   "round": "rb1",
+   "utc": "2026-10-20T15:31:22Z",
+   "dev_skill": 0.2453,
+   "holdout_skill": 0.257,
+   "holdout_looks": 18
+  },
+  {
+   "family": "tourism_m",
+   "label": "Tourism: nights spent in tourist accommodation (Eurostat)",
+   "layer": "tourism",
+   "champion": "adapt:flowstate|toto2x|chronos2x|xcovid:gbm_only-health+transport+economy+markets_reg",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "chronos2x",
+    "xcovid:gbm_only-health+transport+economy+markets_reg"
+   ],
+   "round": "69",
+   "utc": "2026-10-19T18:05:51Z",
+   "dev_skill": 0.2,
+   "holdout_skill": 0.3671,
+   "holdout_looks": 15
+  },
+  {
+   "family": "water_w",
+   "label": "Water: reservoir storage in Spain by basin (MITECO, % of capacity)",
+   "layer": "water",
+   "champion": "blend:toto2x|anchor-chronos2:gbm_all",
+   "members": [
+    "toto2x",
+    "anchor-chronos2:gbm_all"
+   ],
+   "round": "e3",
+   "utc": "2026-10-20T07:30:40Z",
+   "dev_skill": 0.437,
+   "holdout_skill": 0.4273,
+   "holdout_looks": 10
+  },
+  {
+   "family": "wildfire_w",
+   "label": "Environment: wildfire burnt area per country (EFFIS, ha per week)",
+   "layer": "environment",
+   "champion": "anchor-toto2x:gbm_all_reg",
+   "members": [
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "65",
+   "utc": "2026-10-19T17:30:10Z",
+   "dev_skill": 0.4241,
+   "holdout_skill": 0.2264,
+   "holdout_looks": 5
+  },
+  {
+   "family": "aq_d",
+   "label": "Air quality: daily PM2.5 and NO2 in EU capitals (EEA, measured)",
+   "layer": "environment",
+   "champion": "blend:chronos2|gbm_all_cs",
+   "members": [
+    "chronos2",
+    "gbm_all_cs"
+   ],
+   "round": "e6",
+   "utc": "2026-10-20T11:25:14Z",
+   "dev_skill": 0.2527,
+   "holdout_skill": 0.2501,
+   "holdout_looks": 4
+  },
+  {
+   "family": "hicp_ea_m",
+   "label": "Euro-area inflation: HICP y/y, components and member states (Eurostat)",
+   "layer": "economy",
+   "champion": "bu_glob_sel",
+   "members": [
+    "bu_glob_sel"
+   ],
+   "round": "glob1h",
+   "utc": "2026-10-20T22:04:52Z",
+   "dev_skill": 0.2701,
+   "holdout_skill": 0.3781,
+   "holdout_looks": 7
+  },
+  {
+   "family": "ecb_w",
+   "label": "ECB deposit facility rate decided each week (ECB)",
+   "layer": "policy",
+   "champion": "ref",
+   "members": [
+    "ref"
+   ],
+   "round": "0",
+   "utc": "2026-10-19T11:25:00Z",
+   "dev_skill": 0.0,
+   "holdout_skill": 0.0,
+   "holdout_looks": 1
+  },
+  {
+   "family": "choke_w",
+   "label": "Maritime chokepoints: weekly vessel transits (IMF PortWatch)",
+   "layer": "transport",
+   "champion": "blend:toto2x|timesfm25|chronos2",
+   "members": [
+    "toto2x",
+    "timesfm25",
+    "chronos2"
+   ],
+   "round": "c2",
+   "utc": "2026-10-21T23:08:28Z",
+   "dev_skill": 0.2033,
+   "holdout_skill": 0.1934,
+   "holdout_looks": 6
+  },
+  {
+   "family": "jobs_w",
+   "label": "Labour market: Indeed job postings index (not seasonally adjusted)",
+   "layer": "labour",
+   "champion": "blend:flowstate|toto2x|chronos2x",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "chronos2x"
+   ],
+   "round": "jobs2",
+   "utc": "2026-10-23T09:20:04Z",
+   "dev_skill": 0.4048,
+   "holdout_skill": 0.4582,
+   "holdout_looks": 2
+  },
+  {
+   "family": "asylum_m",
+   "label": "Migration: first-time asylum applicants (Eurostat)",
+   "layer": "migration",
+   "champion": "adapt:toto2x|flowstate|anchor-flowstate:gbm_all_reg",
+   "members": [
+    "toto2x",
+    "flowstate",
+    "anchor-flowstate:gbm_all_reg"
+   ],
+   "round": "asy2",
+   "utc": "2026-10-23T10:15:36Z",
+   "dev_skill": 0.1197,
+   "holdout_skill": 0.2689,
+   "holdout_looks": 3
+  },
+  {
+   "family": "milk_m",
+   "label": "Agriculture: raw cow's milk collected (Eurostat)",
+   "layer": "agriculture",
+   "champion": "adapt:flowstate|toto2x|chronos2x|tirex2x|anchor-toto2x:gbm_all_reg",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "chronos2x",
+    "tirex2x",
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "milk2",
+   "utc": "2026-10-23T10:38:47Z",
+   "dev_skill": 0.3372,
+   "holdout_skill": 0.2714,
+   "holdout_looks": 4
+  },
+  {
+   "family": "space_d",
+   "label": "Space weather: geomagnetic activity and solar flux (GFZ Potsdam)",
+   "layer": "space",
+   "champion": "anchor-toto2x:gbm_all_reg",
+   "members": [
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "sp2",
+   "utc": "2026-10-23T12:23:11Z",
+   "dev_skill": 0.1993,
+   "holdout_skill": 0.1943,
+   "holdout_looks": 2
+  },
+  {
+   "family": "regulation_w",
+   "label": "Regulation flow: EU legal acts adopted per week by type (EUR-Lex / Cellar)",
+   "layer": "regulation",
+   "champion": "adapt:toto2x|flowstate|anchor-flowstate:gbm_all_reg",
+   "members": [
+    "toto2x",
+    "flowstate",
+    "anchor-flowstate:gbm_all_reg"
+   ],
+   "round": "reg2",
+   "utc": "2026-10-23T13:20:42Z",
+   "dev_skill": 0.2603,
+   "holdout_skill": 0.2867,
+   "holdout_looks": 2
+  },
+  {
+   "family": "wiki_w",
+   "label": "Public attention: Wikipedia page views per topic group and language edition",
+   "layer": "attention",
+   "champion": "wblend[60,40,0]:{blend:flowstate|toto2x|chronos2x}|toto2x|flowstate",
+   "members": [
+    "wblend[60,40,0]:{blend:flowstate",
+    "toto2x",
+    "chronos2x}",
+    "toto2x",
+    "flowstate"
+   ],
+   "round": "blend1",
+   "utc": "2026-10-25T03:40:25Z",
+   "dev_skill": 0.371,
+   "holdout_skill": 0.467,
+   "holdout_looks": 3
+  },
+  {
+   "family": "carbon_w",
+   "label": "Emissions: weekly CO2 by sector and country (Carbon Monitor)",
+   "layer": "emissions",
+   "champion": "anchor-flowstate:gbm_all_reg",
+   "members": [
+    "anchor-flowstate:gbm_all_reg"
+   ],
+   "round": "lk1",
+   "utc": "2026-10-24T00:36:14Z",
+   "dev_skill": 0.2623,
+   "holdout_skill": 0.6477,
+   "holdout_looks": 3
+  },
+  {
+   "family": "credit_m",
+   "label": "Bank credit: new-business loan volumes (ECB MIR)",
+   "layer": "credit",
+   "champion": "blend:flowstate|toto2x|anchor-toto2x:xlt_fgr",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "anchor-toto2x:xlt_fgr"
+   ],
+   "round": "xl4",
+   "utc": "2026-10-25T01:35:09Z",
+   "dev_skill": 0.2266,
+   "holdout_skill": 0.2271,
+   "holdout_looks": 3
+  },
+  {
+   "family": "constr_m",
+   "label": "Construction: output volume (Eurostat sts_copr_m)",
+   "layer": "construction",
+   "champion": "blend:flowstate|toto2x|anchor-toto2x:gbm_all_reg",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "cn1",
+   "utc": "2026-10-23T23:35:40Z",
+   "dev_skill": 0.323,
+   "holdout_skill": 0.304,
+   "holdout_looks": 1
+  },
+  {
+   "family": "freight_d",
+   "label": "Road freight: daily lorry-toll mileage index, Germany (Destatis / BALM)",
+   "layer": "freight",
+   "champion": "anchor-chronos2s:gbm_all_reg",
+   "members": [
+    "anchor-chronos2s:gbm_all_reg"
+   ],
+   "round": "lk3",
+   "utc": "2026-10-24T08:58:02Z",
+   "dev_skill": 0.6402,
+   "holdout_skill": 0.6892,
+   "holdout_looks": 3
+  },
+  {
+   "family": "firms_m",
+   "label": "Firm demography: Spanish companies constituted and dissolved per month (INE)",
+   "layer": "firms",
+   "champion": "adapt:toto2x|flowstate|anchor-flowstate:gbm_all_reg",
+   "members": [
+    "toto2x",
+    "flowstate",
+    "anchor-flowstate:gbm_all_reg"
+   ],
+   "round": "fi1",
+   "utc": "2026-10-23T23:42:47Z",
+   "dev_skill": 0.2468,
+   "holdout_skill": 0.2342,
+   "holdout_looks": 2
+  },
+  {
+   "family": "housing_m",
+   "label": "Housing market: home sales per autonomous community (INE)",
+   "layer": "housing",
+   "champion": "blend:chronos2xg|flowstate|toto2x",
+   "members": [
+    "chronos2xg",
+    "flowstate",
+    "toto2x"
+   ],
+   "round": "xlc2",
+   "utc": "2026-10-25T00:31:13Z",
+   "dev_skill": 0.2453,
+   "holdout_skill": 0.2142,
+   "holdout_looks": 3
+  },
+  {
+   "family": "sent_m",
+   "label": "Sentiment: EC consumer, services, retail and construction confidence (Eurostat BCS)",
+   "layer": "sentiment",
+   "champion": "blend:flowstate|toto2x|anchor-toto2x:gbm_all_reg",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "se1",
+   "utc": "2026-10-24T02:53:29Z",
+   "dev_skill": 0.1162,
+   "holdout_skill": 0.1215,
+   "holdout_looks": 2
+  },
+  {
+   "family": "services_m",
+   "label": "Services: net turnover of transport, hospitality, ICT and professional services (Eurostat sts_setu_m)",
+   "layer": "services",
+   "champion": "adapt:toto2x|flowstate|anchor-flowstate:gbm_all_reg",
+   "members": [
+    "toto2x",
+    "flowstate",
+    "anchor-flowstate:gbm_all_reg"
+   ],
+   "round": "sv1",
+   "utc": "2026-10-24T09:14:05Z",
+   "dev_skill": 0.3636,
+   "holdout_skill": 0.4652,
+   "holdout_looks": 2
+  },
+  {
+   "family": "insolv_m",
+   "label": "Insolvencies: UK company and individual insolvencies per month (Insolvency Service)",
+   "layer": "insolvency",
+   "champion": "adapt:flowstate|toto2x|chronos2x|tirex2x|anchor-toto2x:xlt_tp",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "chronos2x",
+    "tirex2x",
+    "anchor-toto2x:xlt_tp"
+   ],
+   "round": "xl4",
+   "utc": "2026-10-25T01:31:42Z",
+   "dev_skill": 0.2355,
+   "holdout_skill": 0.2246,
+   "holdout_looks": 2
+  },
+  {
+   "family": "research_m",
+   "label": "Research output: DOIs registered per month by work type (Crossref)",
+   "layer": "research",
+   "champion": "wblend[50,50]:{blend:flowstate|toto2x|anchor-toto2x:gbm_all_reg}|toto2x",
+   "members": [
+    "wblend[50,50]:{blend:flowstate",
+    "toto2x",
+    "anchor-toto2x:gbm_all_reg}",
+    "toto2x"
+   ],
+   "round": "blend1",
+   "utc": "2026-10-25T03:24:42Z",
+   "dev_skill": 0.2666,
+   "holdout_skill": 0.327,
+   "holdout_looks": 2
+  },
+  {
+   "family": "water_m",
+   "label": "Water demand: residential water use per person per day, California urban suppliers (State Water Board)",
+   "layer": "water demand",
+   "champion": "anchor-chronos2s:gbm_all_reg",
+   "members": [
+    "anchor-chronos2s:gbm_all_reg"
+   ],
+   "round": "wa1",
+   "utc": "2026-10-24T08:37:42Z",
+   "dev_skill": 0.2893,
+   "holdout_skill": -0.1345,
+   "holdout_looks": 1
+  },
+  {
+   "family": "transit_d",
+   "label": "MTA daily ridership and traffic, New York (data.ny.gov)",
+   "layer": "transit",
+   "champion": "anchor-chronos2s:gbm_all_reg",
+   "members": [
+    "anchor-chronos2s:gbm_all_reg"
+   ],
+   "round": "tr1",
+   "utc": "2026-10-24T09:12:09Z",
+   "dev_skill": 0.369,
+   "holdout_skill": 0.406,
+   "holdout_looks": 1
+  },
+  {
+   "family": "c311_d",
+   "label": "NYC 311 service requests per day by agency (NYC Open Data)",
+   "layer": "city services",
+   "champion": "anchor-chronos2s:gbm_all_reg",
+   "members": [
+    "anchor-chronos2s:gbm_all_reg"
+   ],
+   "round": "c31",
+   "utc": "2026-10-24T10:56:00Z",
+   "dev_skill": 0.2633,
+   "holdout_skill": 0.2856,
+   "holdout_looks": 1
+  },
+  {
+   "family": "spend_w",
+   "label": "Consumer spending: UK debit card spending by sector and age (Revolut via ONS)",
+   "layer": "consumer spending",
+   "champion": "blend:chronos2s|flowstate|toto2x",
+   "members": [
+    "chronos2s",
+    "flowstate",
+    "toto2x"
+   ],
+   "round": "sp1",
+   "utc": "2026-10-24T09:16:51Z",
+   "dev_skill": 0.4864,
+   "holdout_skill": 0.6279,
+   "holdout_looks": 1
+  },
+  {
+   "family": "rasff_w",
+   "label": "Food safety: RASFF notifications per week (EC RASFF Window)",
+   "layer": "food safety",
+   "champion": "adapt:toto2x|flowstate|anchor-flowstate:gbm_all_reg",
+   "members": [
+    "toto2x",
+    "flowstate",
+    "anchor-flowstate:gbm_all_reg"
+   ],
+   "round": "ra1",
+   "utc": "2026-10-24T10:53:32Z",
+   "dev_skill": 0.2579,
+   "holdout_skill": 0.2329,
+   "holdout_looks": 1
+  },
+  {
+   "family": "ted_w",
+   "label": "Public procurement: TED notices per week (EU Publications Office)",
+   "layer": "public procurement",
+   "champion": "adapt:toto2x|flowstate|anchor-flowstate:gbm_all_reg",
+   "members": [
+    "toto2x",
+    "flowstate",
+    "anchor-flowstate:gbm_all_reg"
+   ],
+   "round": "te1",
+   "utc": "2026-10-24T11:03:30Z",
+   "dev_skill": 0.3699,
+   "holdout_skill": 0.4165,
+   "holdout_looks": 1
+  },
+  {
+   "family": "hmrc_m",
+   "label": "Tax receipts: HMRC receipts by tax, UK (HMRC)",
+   "layer": "tax receipts",
+   "champion": "blend:flowstate|toto2x|chronos2x",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "chronos2x"
+   ],
+   "round": "hm1",
+   "utc": "2026-10-24T10:58:21Z",
+   "dev_skill": 0.3791,
+   "holdout_skill": 0.3072,
+   "holdout_looks": 1
+  },
+  {
+   "family": "traffic_d",
+   "label": "Road traffic: daily vehicle volume by county, Norway (Statens vegvesen)",
+   "layer": "road traffic",
+   "champion": "anchor-chronos2s:gbm_all_reg",
+   "members": [
+    "anchor-chronos2s:gbm_all_reg"
+   ],
+   "round": "tf1",
+   "utc": "2026-10-24T13:31:54Z",
+   "dev_skill": 0.3586,
+   "holdout_skill": 0.446,
+   "holdout_looks": 2
+  },
+  {
+   "family": "mort_w",
+   "label": "Mortality: deaths per week, Netherlands and Belgium (CBS, Statbel)",
+   "layer": "mortality",
+   "champion": "blend:flowstate|toto2x|anchor-toto2x:gbm_all_reg",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "r4",
+   "utc": "2026-10-24T18:04:20Z",
+   "dev_skill": 0.3317,
+   "holdout_skill": 0.3621,
+   "holdout_looks": 1
+  },
+  {
+   "family": "quake_w",
+   "label": "Earthquakes: events per week, magnitude 4.5+, world and three regions (USGS)",
+   "layer": "earthquakes",
+   "champion": "blend:flowstate|toto2x|anchor-toto2x:gbm_all_reg",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "r4",
+   "utc": "2026-10-24T17:51:43Z",
+   "dev_skill": 0.3419,
+   "holdout_skill": 0.3241,
+   "holdout_looks": 1
+  },
+  {
+   "family": "bike_d",
+   "label": "Cycling: daily bicycle counts by county, Norway (Statens vegvesen)",
+   "layer": "cycling",
+   "champion": "chronos2s",
+   "members": [
+    "chronos2s"
+   ],
+   "round": "r5b",
+   "utc": "2026-10-24T22:17:49Z",
+   "dev_skill": 0.2478,
+   "holdout_skill": 0.2669,
+   "holdout_looks": 2
+  },
+  {
+   "family": "reg_d",
+   "label": "Vehicle registrations: vehicles first admitted per day by type, Netherlands (RDW)",
+   "layer": "vehicle registrations",
+   "champion": "anchor-chronos2s:gbm_all_reg",
+   "members": [
+    "anchor-chronos2s:gbm_all_reg"
+   ],
+   "round": "r4",
+   "utc": "2026-10-24T19:19:40Z",
+   "dev_skill": 0.3572,
+   "holdout_skill": 0.3081,
+   "holdout_looks": 1
+  },
+  {
+   "family": "ev_m",
+   "label": "Vehicle electrification: first registrations per month by fuel, Norway (Statistics Norway)",
+   "layer": "vehicle electrification",
+   "champion": "blend:flowstate|toto2x|anchor-toto2x:gbm_all_reg",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "r4",
+   "utc": "2026-10-24T17:34:58Z",
+   "dev_skill": 0.1396,
+   "holdout_skill": 0.2949,
+   "holdout_looks": 1
+  },
+  {
+   "family": "agri_w",
+   "label": "Agri-food prices: EU weekly prices of cereals, oilseeds, pigmeat, beef, poultry, dairy and wine (EC Agri-food data portal)",
+   "layer": "agri-food prices",
+   "champion": "wblend[30,70,0]:{adapt:flowstate|toto2x|chronos2x|tirex2x|anchor-toto2x:gbm_all_reg}|toto2x|tirex2x",
+   "members": [
+    "wblend[30,70,0]:{adapt:flowstate",
+    "toto2x",
+    "chronos2x",
+    "tirex2x",
+    "anchor-toto2x:gbm_all_reg}",
+    "toto2x",
+    "tirex2x"
+   ],
+   "round": "blend1",
+   "utc": "2026-10-25T03:42:28Z",
+   "dev_skill": 0.0642,
+   "holdout_skill": 0.0842,
+   "holdout_looks": 2
+  },
+  {
+   "family": "agricom_m",
+   "label": "Agricultural commodities and fertiliser: World Bank monthly prices of food, oils, grains, softs, meat, cotton, rubber, timber and fertilisers",
+   "layer": "agricultural commodities",
+   "champion": "blend:chronos2s|flowstate|toto2x",
+   "members": [
+    "chronos2s",
+    "flowstate",
+    "toto2x"
+   ],
+   "round": "r4",
+   "utc": "2026-10-24T18:07:46Z",
+   "dev_skill": 0.0465,
+   "holdout_skill": 0.0436,
+   "holdout_looks": 1
+  },
+  {
+   "family": "arxiv_m",
+   "label": "Academic preprints: arXiv submissions per month by category",
+   "layer": "academic preprints",
+   "champion": "adapt:toto2x|flowstate|anchor-flowstate:gbm_all_reg",
+   "members": [
+    "toto2x",
+    "flowstate",
+    "anchor-flowstate:gbm_all_reg"
+   ],
+   "round": "r4",
+   "utc": "2026-10-24T21:00:39Z",
+   "dev_skill": 0.4113,
+   "holdout_skill": 0.4386,
+   "holdout_looks": 1
+  },
+  {
+   "family": "births_m",
+   "label": "Births: live births per day, Netherlands, Sweden and Finland (CBS, SCB, Statistics Finland)",
+   "layer": "births",
+   "champion": "adapt:flowstate|toto2x|chronos2x|tirex2x|anchor-toto2x:gbm_all_reg",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "chronos2x",
+    "tirex2x",
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "r5",
+   "utc": "2026-10-24T22:39:45Z",
+   "dev_skill": 0.2259,
+   "holdout_skill": 0.269,
+   "holdout_looks": 2
+  },
+  {
+   "family": "fire911_w",
+   "label": "Emergency calls: Seattle Fire Department 911 dispatches per week by call group (City of Seattle)",
+   "layer": "emergency calls",
+   "champion": "adapt:flowstate|toto2x|chronos2x|tirex2x|anchor-toto2x:gbm_all_reg",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "chronos2x",
+    "tirex2x",
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "r5",
+   "utc": "2026-10-24T22:38:45Z",
+   "dev_skill": 0.275,
+   "holdout_skill": 0.2439,
+   "holdout_looks": 2
+  },
+  {
+   "family": "library_m",
+   "label": "Library loans: Seattle Public Library checkouts per month by material type (City of Seattle)",
+   "layer": "library loans",
+   "champion": "blend:flowstate|toto2x|anchor-toto2x:gbm_all_reg",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "r5",
+   "utc": "2026-10-24T23:03:08Z",
+   "dev_skill": 0.2,
+   "holdout_skill": 0.1682,
+   "holdout_looks": 1
+  },
+  {
+   "family": "launch_w",
+   "label": "Space launches: orbital launch attempts and payloads orbited per week (GCAT)",
+   "layer": "space launches",
+   "champion": "wblend[10,90,0]:{blend:flowstate|toto2x|anchor-toto2x:gbm_all_reg}|toto2x|flowstate",
+   "members": [
+    "wblend[10,90,0]:{blend:flowstate",
+    "toto2x",
+    "anchor-toto2x:gbm_all_reg}",
+    "toto2x",
+    "flowstate"
+   ],
+   "round": "blend1",
+   "utc": "2026-10-25T03:24:48Z",
+   "dev_skill": 0.2852,
+   "holdout_skill": 0.2247,
+   "holdout_looks": 2
+  },
+  {
+   "family": "sec_w",
+   "label": "Corporate disclosure: SEC EDGAR filings per week by form family (SEC)",
+   "layer": "corporate disclosure",
+   "champion": "blend:flowstate|toto2x|anchor-toto2x:gbm_all_reg",
+   "members": [
+    "flowstate",
+    "toto2x",
+    "anchor-toto2x:gbm_all_reg"
+   ],
+   "round": "r5",
+   "utc": "2026-10-24T22:55:45Z",
+   "dev_skill": 0.274,
+   "holdout_skill": 0.261,
+   "holdout_looks": 1
+  }
+ ]
+}

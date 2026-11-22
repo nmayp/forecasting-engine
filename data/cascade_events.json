@@ -1,0 +1,1939 @@
+{
+ "note": "cascade benchmark event catalogue: onset, origin layer, affected layers (cells) with expected sign and lag, split (dev / check)",
+ "events": [
+  {
+   "id": "gilets_jaunes_2018",
+   "label": "Gilets jaunes protests and road blockades in France",
+   "onset": "2018-11-17",
+   "window_days": 60,
+   "split": "dev",
+   "origin_layer": "society",
+   "shock_drivers": [
+    "gdelt_protest",
+    "gdelt_strike",
+    "gdelt_tone"
+   ],
+   "shock_group": "society",
+   "verified": "date found on a cited page (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "unrest_w",
+     "series": [
+      "strike:FR",
+      "protest:FR"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "retail_m",
+     "series": [
+      "FR"
+     ],
+     "exp": {
+      "sign": "down",
+      "lag": 7
+     },
+     "p": 1
+    },
+    {
+     "family": "tourism_m",
+     "series": [
+      "FR"
+     ],
+     "exp": {
+      "sign": "down",
+      "lag": 14
+     },
+     "p": 2
+    },
+    {
+     "family": "load_d",
+     "series": [
+      "FR"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "security_w",
+     "series": [
+      "violence:FR",
+      "coerce:FR"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "air_d",
+     "series": [
+      "FR"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "diesel_w",
+     "series": [
+      "FR"
+     ],
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "fr_pension_strikes_2019",
+   "label": "French interprofessional strike against the pension reform (start of the transport strike)",
+   "onset": "2019-12-05",
+   "window_days": 45,
+   "split": "dev",
+   "origin_layer": "society",
+   "shock_drivers": [
+    "gdelt_strike",
+    "gdelt_protest",
+    "gdelt_tone"
+   ],
+   "shock_group": "society",
+   "verified": "date found on a cited page (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "unrest_w",
+     "series": [
+      "strike:FR",
+      "protest:FR"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "air_d",
+     "series": [
+      "FR"
+     ],
+     "exp": {
+      "sign": "down",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "load_d",
+     "series": [
+      "FR"
+     ],
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "price_h",
+     "series": [
+      "FR"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "security_w",
+     "series": [
+      "violence:FR",
+      "coerce:FR"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "tourism_m",
+     "series": [
+      "FR"
+     ],
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "heatwave_2019",
+   "label": "Late June 2019 western European heatwave",
+   "onset": "2019-06-24",
+   "window_days": 21,
+   "split": "dev",
+   "origin_layer": "environment",
+   "shock_drivers": [
+    "temp",
+    "cdd"
+   ],
+   "shock_group": "weather",
+   "verified": "date found on a cited page (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "load_d",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 1
+     },
+     "p": 1
+    },
+    {
+     "family": "price_h",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 2
+     },
+     "p": 1
+    },
+    {
+     "family": "aq_d",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "wildfire_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "air_d",
+     "series": [
+      "FR",
+      "DE",
+      "BE",
+      "NL"
+     ],
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "covid_lockdowns_2020",
+   "label": "First national COVID-19 lockdowns in Europe (Italy 9 March 2020)",
+   "onset": "2020-03-09",
+   "window_days": 60,
+   "split": "dev",
+   "origin_layer": "health",
+   "shock_drivers": [
+    "stringency",
+    "stringency_eu",
+    "vix",
+    "ili_rate"
+   ],
+   "shock_group": "health",
+   "verified": "verified on NYT, PBS, Wikipedia (search); stringency series in the lab",
+   "sources": [],
+   "cells": [
+    {
+     "family": "load_d",
+     "series": "*",
+     "exp": {
+      "sign": "down",
+      "lag": 7
+     },
+     "p": 1
+    },
+    {
+     "family": "price_h",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "air_d",
+     "series": "*",
+     "exp": {
+      "sign": "down",
+      "lag": 7
+     },
+     "p": 1
+    },
+    {
+     "family": "tourism_m",
+     "series": "*",
+     "exp": {
+      "sign": "down",
+      "lag": 1
+     },
+     "p": 1
+    },
+    {
+     "family": "diesel_w",
+     "series": "*",
+     "exp": {
+      "sign": "down",
+      "lag": 14
+     },
+     "p": 1
+    },
+    {
+     "family": "aq_d",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 7
+     },
+     "p": 2
+    },
+    {
+     "family": "ip_m",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "retail_m",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "unemp_m",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "commod_d",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "unrest_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "storm_filomena_2021",
+   "label": "Storm Filomena snowfall in Spain",
+   "onset": "2021-01-07",
+   "window_days": 14,
+   "split": "dev",
+   "origin_layer": "environment",
+   "shock_drivers": [
+    "temp",
+    "hdd"
+   ],
+   "shock_group": "weather",
+   "verified": "date found on a cited page (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "load_d",
+     "series": [
+      "ES",
+      "PT"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": 1
+     },
+     "p": 1
+    },
+    {
+     "family": "price_h",
+     "series": [
+      "ES",
+      "PT"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": 1
+     },
+     "p": 1
+    },
+    {
+     "family": "air_d",
+     "series": [
+      "ES"
+     ],
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "load_h",
+     "series": [
+      "ES",
+      "PT"
+     ],
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "ever_given_2021",
+   "label": "Suez Canal blocked by the Ever Given",
+   "onset": "2021-03-23",
+   "window_days": 30,
+   "split": "dev",
+   "origin_layer": "trade",
+   "shock_drivers": [
+    "brent_eur",
+    "oil_region_violence"
+   ],
+   "shock_group": "markets",
+   "verified": "date verified on a cited page for month, exact day in the lab shock list",
+   "sources": [],
+   "cells": [
+    {
+     "family": "commod_d",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 1
+     },
+     "p": 1
+    },
+    {
+     "family": "ports_m",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "diesel_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "air_d",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "floods_de_be_2021",
+   "label": "July 2021 floods in Germany and Belgium",
+   "onset": "2021-07-14",
+   "window_days": 21,
+   "split": "dev",
+   "origin_layer": "environment",
+   "shock_drivers": [
+    "temp"
+   ],
+   "shock_group": "weather",
+   "verified": "flood peak 14 July 2021 (rain from 12 July, catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "load_d",
+     "series": [
+      "DE",
+      "BE",
+      "NL"
+     ],
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "air_d",
+     "series": [
+      "DE",
+      "BE",
+      "NL",
+      "LU"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "ip_m",
+     "series": [
+      "DE",
+      "BE"
+     ],
+     "exp": {
+      "sign": "down",
+      "lag": 15
+     },
+     "p": 1
+    },
+    {
+     "family": "price_h",
+     "series": [
+      "DE",
+      "BE",
+      "NL"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "aq_d",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "omicron_2021",
+   "label": "Omicron: travel bans and new restrictions across Europe",
+   "onset": "2021-11-26",
+   "window_days": 45,
+   "split": "dev",
+   "origin_layer": "health",
+   "shock_drivers": [
+    "stringency",
+    "stringency_eu",
+    "vix"
+   ],
+   "shock_group": "health",
+   "verified": "date found on two cited pages (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "air_d",
+     "series": "*",
+     "exp": {
+      "sign": "down",
+      "lag": 1
+     },
+     "p": 1
+    },
+    {
+     "family": "tourism_m",
+     "series": "*",
+     "exp": {
+      "sign": "down",
+      "lag": 5
+     },
+     "p": 1
+    },
+    {
+     "family": "commod_d",
+     "series": "*",
+     "exp": {
+      "sign": "down",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "load_d",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "fx_d",
+     "series": [
+      "USD",
+      "CHF",
+      "JPY",
+      "GBP"
+     ],
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "ukraine_invasion_2022",
+   "label": "Russia's full-scale invasion of Ukraine",
+   "onset": "2022-02-24",
+   "window_days": 60,
+   "split": "dev",
+   "origin_layer": "society",
+   "shock_drivers": [
+    "oil_region_violence",
+    "brent_eur",
+    "gas_eu_usd",
+    "wheat_usd",
+    "vix",
+    "tone_world"
+   ],
+   "shock_group": "markets",
+   "verified": "date found on two cited pages (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "commod_d",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "fx_d",
+     "series": [
+      "PLN",
+      "HUF",
+      "CZK",
+      "RON",
+      "USD",
+      "CHF"
+     ],
+     "exp": {
+      "sign": "down",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "diesel_w",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "gasoline_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "price_h",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "hicp_m",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "security_w",
+     "series": [
+      "violence:PL",
+      "violence:DE",
+      "violence:RO",
+      "violence:UA",
+      "coerce:PL",
+      "coerce:DE",
+      "coerce:RO",
+      "coerce:UA"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "info_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "ports_m",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "air_d",
+     "series": [
+      "PL",
+      "FI",
+      "EE",
+      "LV",
+      "LT",
+      "RO"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "tourism_m",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "unrest_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "nord_stream_cuts_2022",
+   "label": "Gazprom cuts Nord Stream 1 flows by 40 percent",
+   "onset": "2022-06-14",
+   "window_days": 60,
+   "split": "dev",
+   "origin_layer": "energy",
+   "shock_drivers": [
+    "gas_eu_usd",
+    "henry_hub_eur",
+    "brent_eur"
+   ],
+   "shock_group": "markets",
+   "verified": "second search source (Brussels Times, Reuters 14 June 2022)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "price_h",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 1
+     },
+     "p": 1
+    },
+    {
+     "family": "commod_d",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "load_d",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "hicp_m",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "ip_m",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "diesel_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "ecb_first_hike_2022",
+   "label": "ECB announces its first rate rise since 2011",
+   "onset": "2022-07-21",
+   "window_days": 60,
+   "split": "dev",
+   "origin_layer": "policy",
+   "shock_drivers": [
+    "ecb_deposit_rate",
+    "us2y_minus_ecb"
+   ],
+   "shock_group": "markets",
+   "verified": "date found on a cited page (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "fx_d",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "hicp_m",
+     "series": "*",
+     "exp": {
+      "sign": "down",
+      "lag": 90
+     },
+     "p": 1
+    },
+    {
+     "family": "unemp_m",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "hicp_ea_m",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "heatwave_2022",
+   "label": "July 2022 western European heatwave",
+   "onset": "2022-07-12",
+   "window_days": 21,
+   "split": "dev",
+   "origin_layer": "environment",
+   "shock_drivers": [
+    "temp",
+    "cdd"
+   ],
+   "shock_group": "weather",
+   "verified": "onset is the start of the record heat (fuzzy); layers checked against lab temperature data",
+   "sources": [],
+   "cells": [
+    {
+     "family": "load_d",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "price_h",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "wildfire_w",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 2
+     },
+     "p": 1
+    },
+    {
+     "family": "water_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "aq_d",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "fr_refinery_strikes_2022",
+   "label": "French refinery strikes and fuel shortages",
+   "onset": "2022-09-27",
+   "window_days": 35,
+   "split": "dev",
+   "origin_layer": "society",
+   "shock_drivers": [
+    "gdelt_strike",
+    "gdelt_protest"
+   ],
+   "shock_group": "society",
+   "verified": "second search source (Reuters 27 Sept 2022)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "diesel_w",
+     "series": [
+      "FR",
+      "BE",
+      "DE",
+      "ES",
+      "IT"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": 7
+     },
+     "p": 1
+    },
+    {
+     "family": "gasoline_w",
+     "series": [
+      "FR",
+      "BE",
+      "DE",
+      "ES",
+      "IT"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "unrest_w",
+     "series": [
+      "strike:FR"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "info_w",
+     "series": [
+      "tone:FR"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "air_d",
+     "series": [
+      "FR"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "commod_d",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "nord_stream_sabotage_2022",
+   "label": "Nord Stream pipelines sabotaged",
+   "onset": "2022-09-26",
+   "window_days": 30,
+   "split": "dev",
+   "origin_layer": "energy",
+   "shock_drivers": [
+    "gas_eu_usd",
+    "henry_hub_eur",
+    "brent_eur"
+   ],
+   "shock_group": "markets",
+   "verified": "second search source (Wikipedia, CNN)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "commod_d",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 1
+     },
+     "p": 1
+    },
+    {
+     "family": "price_h",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "security_w",
+     "series": [
+      "violence:DE",
+      "violence:SE",
+      "violence:DK",
+      "violence:PL",
+      "coerce:DE",
+      "coerce:SE",
+      "coerce:DK",
+      "coerce:PL"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 2
+    },
+    {
+     "family": "info_w",
+     "series": [
+      "tone:DE",
+      "tone:SE",
+      "tone:DK",
+      "tone:PL"
+     ],
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "uk_minibudget_2022",
+   "label": "UK mini-budget market turmoil",
+   "onset": "2022-09-23",
+   "window_days": 30,
+   "split": "dev",
+   "origin_layer": "policy",
+   "shock_drivers": [
+    "us10y",
+    "vix",
+    "dollar_index"
+   ],
+   "shock_group": "markets",
+   "verified": "date found on a cited page (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "fx_d",
+     "series": [
+      "GBP"
+     ],
+     "exp": {
+      "sign": "down",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "info_w",
+     "series": [
+      "tone:GB"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "air_d",
+     "series": [
+      "GB"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "commod_d",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "svb_collapse_2023",
+   "label": "Silicon Valley Bank collapse",
+   "onset": "2023-03-10",
+   "window_days": 30,
+   "split": "dev",
+   "origin_layer": "markets",
+   "shock_drivers": [
+    "vix",
+    "us10y",
+    "us2y_minus_ecb"
+   ],
+   "shock_group": "markets",
+   "verified": "date found on a cited page (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "fx_d",
+     "series": "*",
+     "exp": {
+      "sign": "mixed",
+      "lag": 2
+     },
+     "p": 1
+    },
+    {
+     "family": "commod_d",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "info_w",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 2
+    },
+    {
+     "family": "price_h",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "fr_pension_strikes_2023",
+   "label": "French pension reform strikes (first national day 19 Jan 2023)",
+   "onset": "2023-01-19",
+   "window_days": 60,
+   "split": "dev",
+   "origin_layer": "society",
+   "shock_drivers": [
+    "gdelt_strike",
+    "gdelt_protest",
+    "gdelt_tone"
+   ],
+   "shock_group": "society",
+   "verified": "date found on a cited page (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "unrest_w",
+     "series": [
+      "strike:FR",
+      "protest:FR"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "air_d",
+     "series": [
+      "FR"
+     ],
+     "exp": {
+      "sign": "down",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "load_d",
+     "series": [
+      "FR"
+     ],
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "price_h",
+     "series": [
+      "FR"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "security_w",
+     "series": [
+      "violence:FR",
+      "coerce:FR"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "info_w",
+     "series": [
+      "tone:FR"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "fx_d",
+     "series": [
+      "USD"
+     ],
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "opec_cut_2023",
+   "label": "Surprise OPEC+ production cut",
+   "onset": "2023-04-02",
+   "window_days": 30,
+   "split": "dev",
+   "origin_layer": "fuel",
+   "shock_drivers": [
+    "brent_eur"
+   ],
+   "shock_group": "markets",
+   "verified": "date found on a cited page (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "commod_d",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 1
+     },
+     "p": 1
+    },
+    {
+     "family": "diesel_w",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 8
+     },
+     "p": 1
+    },
+    {
+     "family": "gasoline_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "hicp_m",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "unrest_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "de_nuclear_exit_2023",
+   "label": "Germany shuts its last three nuclear plants",
+   "onset": "2023-04-15",
+   "window_days": 45,
+   "split": "dev",
+   "origin_layer": "policy",
+   "shock_drivers": [
+    "nuclear_share",
+    "net_imports"
+   ],
+   "shock_group": "energy",
+   "verified": "verified on BASE and NPR (search)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "price_h",
+     "series": [
+      "DE",
+      "FR",
+      "NL",
+      "BE",
+      "PL"
+     ],
+     "exp": {
+      "sign": "mixed",
+      "lag": 1
+     },
+     "p": 1
+    },
+    {
+     "family": "load_d",
+     "series": [
+      "DE"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "res_h",
+     "series": [
+      "DE"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "info_w",
+     "series": [
+      "tone:DE"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "moveit_2023",
+   "label": "MOVEit Transfer mass exploitation",
+   "onset": "2023-05-31",
+   "window_days": 30,
+   "split": "dev",
+   "origin_layer": "cyber",
+   "shock_drivers": [
+    "kev_new"
+   ],
+   "shock_group": "cyber",
+   "verified": "verified on Progress advisory, CISA, NVD (search)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "kev_d",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 2
+     },
+     "p": 1
+    },
+    {
+     "family": "security_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "info_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "price_h",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "red_sea_2023",
+   "label": "Houthi attacks on Red Sea shipping, carriers reroute",
+   "onset": "2023-12-15",
+   "window_days": 60,
+   "split": "dev",
+   "origin_layer": "trade",
+   "shock_drivers": [
+    "oil_region_violence",
+    "brent_eur",
+    "teu"
+   ],
+   "shock_group": "markets",
+   "verified": "date found on a cited page (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "commod_d",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "diesel_w",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "ports_m",
+     "series": "*",
+     "exp": {
+      "sign": "down",
+      "lag": 20
+     },
+     "p": 1
+    },
+    {
+     "family": "info_w",
+     "series": "*",
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 2
+    },
+    {
+     "family": "security_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "air_d",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "hicp_m",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "opec_cut_2023_brent",
+   "label": "Surprise OPEC+ production cut, Brent only (published-estimate check)",
+   "onset": "2023-04-02",
+   "window_days": 30,
+   "split": "published",
+   "origin_layer": "fuel",
+   "shock_drivers": [
+    "brent_eur"
+   ],
+   "shock_group": "markets",
+   "verified": "same onset as opec_cut_2023",
+   "sources": [],
+   "cells": [
+    {
+     "family": "commod_d",
+     "series": [
+      "brent_eur"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": 1
+     },
+     "p": 1
+    }
+   ]
+  },
+  {
+   "id": "farmer_protests_2024",
+   "label": "European farmer protests (Germany's action week from 8 Jan 2024, French blockades from 18 Jan)",
+   "onset": "2024-01-08",
+   "window_days": 60,
+   "split": "check",
+   "origin_layer": "society",
+   "shock_drivers": [
+    "gdelt_protest",
+    "gdelt_tone",
+    "diesel_eu"
+   ],
+   "shock_group": "society",
+   "verified": "verified on PBS, Guardian, Euronews (search): week of action from 8 Jan 2024",
+   "sources": [],
+   "cells": [
+    {
+     "family": "unrest_w",
+     "series": [
+      "protest:FR",
+      "protest:DE",
+      "protest:BE",
+      "protest:NL",
+      "protest:PL",
+      "protest:ES",
+      "protest:IT",
+      "protest:RO"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "diesel_w",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "security_w",
+     "series": [
+      "violence:FR",
+      "violence:DE",
+      "violence:BE",
+      "coerce:FR",
+      "coerce:DE",
+      "coerce:BE"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "info_w",
+     "series": [
+      "tone:FR",
+      "tone:DE",
+      "tone:BE",
+      "tone:NL"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "ports_m",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "crowdstrike_2024",
+   "label": "CrowdStrike faulty update takes down Windows systems worldwide",
+   "onset": "2024-07-19",
+   "window_days": 21,
+   "split": "check",
+   "origin_layer": "cyber",
+   "shock_drivers": [
+    "kev_new"
+   ],
+   "shock_group": "cyber",
+   "verified": "date found on a cited page (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "air_d",
+     "series": "*",
+     "exp": {
+      "sign": "down",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "kev_d",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "info_w",
+     "series": "*",
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "security_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "load_d",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "paris_olympics_2024",
+   "label": "Paris 2024 Olympic Games (security perimeter, crowds, travel)",
+   "onset": "2024-07-26",
+   "window_days": 21,
+   "split": "check",
+   "origin_layer": "events",
+   "shock_drivers": [
+    "tone_eu"
+   ],
+   "shock_group": "society",
+   "verified": "date found on a cited page (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "air_d",
+     "series": [
+      "FR"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": -7
+     },
+     "p": 1
+    },
+    {
+     "family": "tourism_m",
+     "series": [
+      "FR"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "security_w",
+     "series": [
+      "violence:FR",
+      "coerce:FR"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "info_w",
+     "series": [
+      "tone:FR"
+     ],
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "load_d",
+     "series": [
+      "FR"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "price_h",
+     "series": [
+      "FR"
+     ],
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "storm_boris_2024",
+   "label": "Storm Boris floods in central Europe",
+   "onset": "2024-09-12",
+   "window_days": 21,
+   "split": "check",
+   "origin_layer": "environment",
+   "shock_drivers": [
+    "temp"
+   ],
+   "shock_group": "weather",
+   "verified": "date found on a cited page (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "load_d",
+     "series": [
+      "PL",
+      "DE"
+     ],
+     "exp": {
+      "sign": "down",
+      "lag": 1
+     },
+     "p": 1
+    },
+    {
+     "family": "air_d",
+     "series": [
+      "PL",
+      "CZ",
+      "AT",
+      "HU",
+      "SK",
+      "RO"
+     ],
+     "exp": {
+      "sign": "down",
+      "lag": 2
+     },
+     "p": 1
+    },
+    {
+     "family": "price_h",
+     "series": [
+      "PL",
+      "DE"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "aq_d",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "info_w",
+     "series": [
+      "tone:PL",
+      "tone:CZ",
+      "tone:AT"
+     ],
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "valencia_dana_2024",
+   "label": "Valencia DANA floods",
+   "onset": "2024-10-29",
+   "window_days": 21,
+   "split": "check",
+   "origin_layer": "environment",
+   "shock_drivers": [
+    "temp"
+   ],
+   "shock_group": "weather",
+   "verified": "date found on a cited page (catalogue)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "load_d",
+     "series": [
+      "ES"
+     ],
+     "exp": {
+      "sign": "down",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "air_d",
+     "series": [
+      "ES"
+     ],
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "price_h",
+     "series": [
+      "ES"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "info_w",
+     "series": [
+      "tone:ES"
+     ],
+     "exp": null,
+     "p": 1
+    },
+    {
+     "family": "security_w",
+     "series": [
+      "violence:ES",
+      "coerce:ES"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "tourism_m",
+     "series": [
+      "ES"
+     ],
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "heathrow_fire_2025",
+   "label": "Heathrow closed by a substation fire",
+   "onset": "2025-03-21",
+   "window_days": 14,
+   "split": "check",
+   "origin_layer": "energy",
+   "shock_drivers": [
+    "gen_outage_mw"
+   ],
+   "shock_group": "energy",
+   "verified": "verified on NPR, NYT (search)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "air_d",
+     "series": "*",
+     "exp": {
+      "sign": "down",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "info_w",
+     "series": [
+      "tone:GB"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "fx_d",
+     "series": [
+      "GBP"
+     ],
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "us_tariffs_2025",
+   "label": "US 'Liberation Day' tariffs",
+   "onset": "2025-04-02",
+   "window_days": 60,
+   "split": "check",
+   "origin_layer": "policy",
+   "shock_drivers": [
+    "vix",
+    "us10y",
+    "dollar_index"
+   ],
+   "shock_group": "markets",
+   "verified": "verified on Wikipedia (search)",
+   "sources": [],
+   "cells": [
+    {
+     "family": "fx_d",
+     "series": "*",
+     "exp": {
+      "sign": "mixed",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "commod_d",
+     "series": "*",
+     "exp": {
+      "sign": "mixed",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "ports_m",
+     "series": "*",
+     "exp": {
+      "sign": "down",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "info_w",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "ip_m",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "retail_m",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "hicp_ea_m",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    }
+   ]
+  },
+  {
+   "id": "iberian_blackout_2025",
+   "label": "Iberian peninsula blackout",
+   "onset": "2025-04-28",
+   "window_days": 21,
+   "split": "check",
+   "origin_layer": "energy",
+   "shock_drivers": [
+    "load",
+    "net_imports",
+    "gen_outage_mw"
+   ],
+   "shock_group": "energy",
+   "verified": "date verified in the lab shock list and ENTSO-E",
+   "sources": [],
+   "cells": [
+    {
+     "family": "load_d",
+     "series": [
+      "ES",
+      "PT"
+     ],
+     "exp": {
+      "sign": "down",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "price_h",
+     "series": [
+      "ES",
+      "PT",
+      "FR"
+     ],
+     "exp": {
+      "sign": "up",
+      "lag": 1
+     },
+     "p": 1
+    },
+    {
+     "family": "load_h",
+     "series": [
+      "ES",
+      "PT"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "res_h",
+     "series": [
+      "ES",
+      "PT"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "air_d",
+     "series": [
+      "ES",
+      "PT"
+     ],
+     "exp": {
+      "sign": "down",
+      "lag": 0
+     },
+     "p": 1
+    },
+    {
+     "family": "info_w",
+     "series": [
+      "tone:ES",
+      "tone:PT"
+     ],
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "aq_d",
+     "series": "*",
+     "exp": null,
+     "p": 2
+    },
+    {
+     "family": "health_w",
+     "series": [
+      "ES",
+      "PT"
+     ],
+     "exp": null,
+     "p": 2
+    }
+   ]
+  }
+ ]
+}

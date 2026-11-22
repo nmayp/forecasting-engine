@@ -1,0 +1,287 @@
+{
+  "Web/CloudOps_long": {
+    "configs": [
+      "bitbrains_fast_storage/5T/long",
+      "bitbrains_rnd/5T/long",
+      "bizitobs_application/10S/long",
+      "bizitobs_l2c/5T/long",
+      "bizitobs_l2c/H/long",
+      "bizitobs_service/10S/long"
+    ],
+    "members": [
+      "Toto-2.0",
+      "Chronos-2",
+      "TimesFM-2.5"
+    ],
+    "combiner": "median",
+    "val_MASE": 0.5727943867819136,
+    "val_CRPS": 0.43175704197441267,
+    "all_four_mean_MASE": 0.5974173073269782
+  },
+  "Web/CloudOps_medium": {
+    "configs": [
+      "bitbrains_fast_storage/5T/medium",
+      "bitbrains_rnd/5T/medium",
+      "bizitobs_application/10S/medium",
+      "bizitobs_l2c/5T/medium",
+      "bizitobs_l2c/H/medium",
+      "bizitobs_service/10S/medium"
+    ],
+    "members": [
+      "Toto-2.0",
+      "Chronos-2"
+    ],
+    "combiner": "mean",
+    "val_MASE": 0.5769438342738042,
+    "val_CRPS": 0.45368355886698397,
+    "all_four_mean_MASE": 0.5934860654163291
+  },
+  "Web/CloudOps_short": {
+    "configs": [
+      "bitbrains_fast_storage/5T/short",
+      "bitbrains_fast_storage/H/short",
+      "bitbrains_rnd/5T/short",
+      "bitbrains_rnd/H/short",
+      "bizitobs_application/10S/short",
+      "bizitobs_l2c/5T/short",
+      "bizitobs_l2c/H/short",
+      "bizitobs_service/10S/short"
+    ],
+    "members": [
+      "Toto-2.0",
+      "Chronos-2",
+      "TimesFM-2.5"
+    ],
+    "combiner": "median",
+    "val_MASE": 0.4492112528913885,
+    "val_CRPS": 0.32133246923168496,
+    "all_four_mean_MASE": 0.459359943267177
+  },
+  "Sales_short": {
+    "configs": [
+      "car_parts/M/short",
+      "hierarchical_sales/D/short",
+      "hierarchical_sales/W/short",
+      "restaurant/D/short"
+    ],
+    "members": [
+      "Chronos-2",
+      "TiRex-2",
+      "TimesFM-2.5"
+    ],
+    "combiner": "median",
+    "val_MASE": 0.7001885053315686,
+    "val_CRPS": 0.44905754445975016,
+    "all_four_mean_MASE": 0.7125924425987802
+  },
+  "Healthcare_short": {
+    "configs": [
+      "covid_deaths/D/short",
+      "hospital/M/short",
+      "us_births/D/short",
+      "us_births/M/short",
+      "us_births/W/short"
+    ],
+    "members": [
+      "Toto-2.0",
+      "Chronos-2",
+      "TimesFM-2.5"
+    ],
+    "combiner": "median",
+    "val_MASE": 0.5695172866196393,
+    "val_CRPS": 0.40630707164580737,
+    "all_four_mean_MASE": 0.5865720363776781
+  },
+  "Energy_long": {
+    "configs": [
+      "electricity/15T/long",
+      "electricity/H/long",
+      "ett1/15T/long",
+      "ett1/H/long",
+      "ett2/15T/long",
+      "ett2/H/long",
+      "solar/10T/long",
+      "solar/H/long"
+    ],
+    "members": [
+      "Chronos-2",
+      "TiRex-2"
+    ],
+    "combiner": "mean",
+    "val_MASE": 0.8140958288752929,
+    "val_CRPS": 0.5504098579608003,
+    "all_four_mean_MASE": 0.8348460921778043
+  },
+  "Energy_medium": {
+    "configs": [
+      "electricity/15T/medium",
+      "electricity/H/medium",
+      "ett1/15T/medium",
+      "ett1/H/medium",
+      "ett2/15T/medium",
+      "ett2/H/medium",
+      "solar/10T/medium",
+      "solar/H/medium"
+    ],
+    "members": [
+      "TiRex-2"
+    ],
+    "combiner": "mean",
+    "val_MASE": 0.7512845550716287,
+    "val_CRPS": 0.5631736870520513,
+    "all_four_mean_MASE": 0.8043474893478113
+  },
+  "Energy_short": {
+    "configs": [
+      "electricity/15T/short",
+      "electricity/D/short",
+      "electricity/H/short",
+      "electricity/W/short",
+      "ett1/15T/short",
+      "ett1/D/short",
+      "ett1/H/short",
+      "ett1/W/short",
+      "ett2/15T/short",
+      "ett2/D/short",
+      "ett2/H/short",
+      "ett2/W/short",
+      "solar/10T/short",
+      "solar/D/short",
+      "solar/H/short",
+      "solar/W/short"
+    ],
+    "members": [
+      "Chronos-2",
+      "TiRex-2"
+    ],
+    "combiner": "mean",
+    "val_MASE": 0.7768407453946322,
+    "val_CRPS": 0.6183159712420155,
+    "all_four_mean_MASE": 0.7949954226655228
+  },
+  "Nature_long": {
+    "configs": [
+      "jena_weather/10T/long",
+      "jena_weather/H/long",
+      "kdd_cup_2018/H/long"
+    ],
+    "members": [
+      "Toto-2.0",
+      "Chronos-2"
+    ],
+    "combiner": "mean",
+    "val_MASE": 0.7362348563462644,
+    "val_CRPS": 0.2464254319340841,
+    "all_four_mean_MASE": 0.7673407501552661
+  },
+  "Nature_medium": {
+    "configs": [
+      "jena_weather/10T/medium",
+      "jena_weather/H/medium",
+      "kdd_cup_2018/H/medium"
+    ],
+    "members": [
+      "Chronos-2",
+      "TimesFM-2.5"
+    ],
+    "combiner": "mean",
+    "val_MASE": 0.7708763319411303,
+    "val_CRPS": 0.2734177760730318,
+    "all_four_mean_MASE": 0.7758723327852036
+  },
+  "Nature_short": {
+    "configs": [
+      "jena_weather/10T/short",
+      "jena_weather/D/short",
+      "jena_weather/H/short",
+      "kdd_cup_2018/D/short",
+      "kdd_cup_2018/H/short",
+      "saugeen/D/short",
+      "saugeen/M/short",
+      "saugeen/W/short",
+      "temperature_rain/D/short"
+    ],
+    "members": [
+      "Chronos-2",
+      "TiRex-2"
+    ],
+    "combiner": "mean",
+    "val_MASE": 0.650978614181319,
+    "val_CRPS": 0.4177830434617146,
+    "all_four_mean_MASE": null
+  },
+  "Transport_long": {
+    "configs": [
+      "loop_seattle/5T/long",
+      "loop_seattle/H/long",
+      "m_dense/H/long",
+      "sz_taxi/15T/long"
+    ],
+    "members": [
+      "Toto-2.0",
+      "TiRex-2",
+      "TimesFM-2.5"
+    ],
+    "combiner": "median",
+    "val_MASE": 0.6209299289420536,
+    "val_CRPS": 0.3780429283601719,
+    "all_four_mean_MASE": 0.6212769350554119
+  },
+  "Transport_medium": {
+    "configs": [
+      "loop_seattle/5T/medium",
+      "loop_seattle/H/medium",
+      "m_dense/H/medium",
+      "sz_taxi/15T/medium"
+    ],
+    "members": [
+      "Toto-2.0",
+      "Chronos-2",
+      "TiRex-2",
+      "TimesFM-2.5"
+    ],
+    "combiner": "median",
+    "val_MASE": 0.5739768083480198,
+    "val_CRPS": 0.4110896119911853,
+    "all_four_mean_MASE": 0.5748408933996917
+  },
+  "Transport_short": {
+    "configs": [
+      "loop_seattle/5T/short",
+      "loop_seattle/D/short",
+      "loop_seattle/H/short",
+      "m_dense/D/short",
+      "m_dense/H/short",
+      "sz_taxi/15T/short",
+      "sz_taxi/H/short"
+    ],
+    "members": [
+      "Chronos-2",
+      "TimesFM-2.5"
+    ],
+    "combiner": "mean",
+    "val_MASE": 0.5397013676865554,
+    "val_CRPS": 0.42150694067399763,
+    "all_four_mean_MASE": 0.5439282926362268
+  },
+  "Econ/Fin_short": {
+    "configs": [
+      "m4_daily/D/short",
+      "m4_hourly/H/short",
+      "m4_monthly/M/short",
+      "m4_quarterly/Q/short",
+      "m4_weekly/W/short",
+      "m4_yearly/A/short"
+    ],
+    "members": [
+      "Toto-2.0",
+      "Chronos-2",
+      "TiRex-2",
+      "TimesFM-2.5"
+    ],
+    "combiner": "median",
+    "val_MASE": 0.7419808567088253,
+    "val_CRPS": 0.7615111651309503,
+    "all_four_mean_MASE": 0.7431325885948707
+  }
+}

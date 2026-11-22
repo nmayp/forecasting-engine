@@ -1,0 +1,52 @@
+{
+ "note": "Third-party models used as members and as the bar. Their weights are not copied here; load them by id. A null means it was not recorded.",
+ "models": [
+  {
+   "name": "Chronos-2",
+   "maker": "Amazon",
+   "hf": "amazon/chronos-2",
+   "package": "chronos-forecasting",
+   "package_version": null,
+   "revision": null,
+   "licence": "Apache-2.0",
+   "note": "package version and weights revision were not recorded in the code"
+  },
+  {
+   "name": "TiRex-2",
+   "maker": "NX-AI",
+   "hf": "NX-AI/TiRex-2",
+   "package": "tirex-2",
+   "package_version": "0.3.1",
+   "revision": null,
+   "licence": "Apache-2.0"
+  },
+  {
+   "name": "Toto 2.0",
+   "maker": "Datadog",
+   "hf": "Datadog/Toto-2.0-1B",
+   "package": "toto-2",
+   "package_version": "2.0.0",
+   "revision": null,
+   "licence": "Apache-2.0"
+  },
+  {
+   "name": "TimesFM 2.5",
+   "maker": "Google",
+   "hf": "google/timesfm-2.5-200m-pytorch",
+   "package": "timesfm",
+   "package_version": "2.0.2",
+   "revision": null,
+   "licence": "Apache-2.0",
+   "note": "the 2.5 code; the 3.0 weights are non-commercial and were never used"
+  },
+  {
+   "name": "FlowState",
+   "maker": "IBM",
+   "hf": "ibm-granite/granite-timeseries-flowstate-r1",
+   "package": "granite-tsfm",
+   "package_version": "0.3.10 (installed --no-deps)",
+   "revision": "r1.1",
+   "licence": "Apache-2.0"
+  }
+ ]
+}

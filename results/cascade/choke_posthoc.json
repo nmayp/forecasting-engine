@@ -1,0 +1,112 @@
+{
+ "rtm_monthly": {
+  "2023-12-01": {
+   "real": 0.212,
+   "pred": 0.455
+  },
+  "2024-01-01": {
+   "real": 1.274,
+   "pred": 1.068
+  },
+  "2024-02-01": {
+   "real": 1.213,
+   "pred": 1.196
+  },
+  "2024-03-01": {
+   "real": 0.988,
+   "pred": 1.214
+  },
+  "2024-04-01": {
+   "real": 0.89,
+   "pred": 1.203
+  },
+  "2024-05-01": {
+   "real": 1.143,
+   "pred": 1.194
+  },
+  "2024-06-01": {
+   "real": 1.657,
+   "pred": 1.178
+  },
+  "2024-07-01": {
+   "real": 1.875,
+   "pred": 1.194
+  },
+  "2024-08-01": {
+   "real": NaN,
+   "pred": 1.171
+  },
+  "2024-09-01": {
+   "real": 1.329,
+   "pred": 1.247
+  },
+  "2024-10-01": {
+   "real": 0.988,
+   "pred": 1.185
+  },
+  "2024-11-01": {
+   "real": 1.169,
+   "pred": 1.155
+  },
+  "2024-12-01": {
+   "real": NaN,
+   "pred": 1.16
+  }
+ },
+ "rtm_peak": {
+  "real_week": "2024-07-15",
+  "real_max": 1.886,
+  "pred_week": "2024-09-23",
+  "pred_max": 1.302
+ },
+ "rtm_size_sensitivity": {
+  "beta7_phi0.15": 0.48,
+  "beta7_phi0.21": 0.67,
+  "beta7_phi0.27": 0.86,
+  "beta10_phi0.15": 0.68,
+  "beta10_phi0.21": 0.96,
+  "beta10_phi0.27": 1.23,
+  "beta15_phi0.15": 1.02,
+  "beta15_phi0.21": 1.43,
+  "beta15_phi0.27": 1.84
+ },
+ "suez_container_diverted_share": {
+  "mean_26w": 0.538,
+  "mean_52w": 0.553,
+  "max": 0.681
+ },
+ "l2_implied_imp_consumer": {
+  "real_mean": -0.0069,
+  "placebo_sd": 0.0142,
+  "lagged_freight_mean": 0.751,
+  "eps_implied": -0.0091,
+  "eps_ci95": [
+   -0.0469,
+   0.0286
+  ],
+  "eps_prior": 0.065
+ },
+ "l2_implied_imp_interm": {
+  "real_mean": -0.0041,
+  "placebo_sd": 0.0188,
+  "lagged_freight_mean": 0.751,
+  "eps_implied": -0.0055,
+  "eps_ci95": [
+   -0.0557,
+   0.0447
+  ],
+  "eps_prior": 0.065
+ },
+ "freight_mean_ln_composite": 0.839,
+ "cost_share_0.23_0.03": 0.0091,
+ "cost_share_0.23_0.05": 0.0151,
+ "cost_share_0.35_0.05": 0.023,
+ "chain_end": {
+  "freight": 0.4062,
+  "import_price": 0.0263,
+  "hicp": 0.0066,
+  "real_import_price": -0.0165,
+  "real_hicp": 0.0071
+ },
+ "chain_peak_hicp_pred": 0.0067
+}

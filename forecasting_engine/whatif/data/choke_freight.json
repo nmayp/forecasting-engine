@@ -1,0 +1,67 @@
+{
+ "name": "choke_freight",
+ "as_of": "2026-10-22",
+ "beta": 10.0,
+ "phi": {
+  "suez": 0.21,
+  "panama": 0.15
+ },
+ "exposure": {
+  "wci_rtm": {
+   "suez": 1.0,
+   "panama": 0.0
+  },
+  "wci": {
+   "suez": 0.35,
+   "panama": 0.05
+  },
+  "scfi": {
+   "suez": 0.25,
+   "panama": 0.1
+  }
+ },
+ "ewma_a": 0.5,
+ "size_factor": {
+  "p10": 0.658,
+  "p50": 1.0,
+  "p90": 1.575,
+  "n": 9,
+  "min": 0.5,
+  "max": 1.917,
+  "basis": "size ratio predicted / realised of the Shanghai-Rotterdam rise over beta in {7, 10, 15} x phi in {0.15, 0.21, 0.27}, relative to the central beta 10, phi 0.21 (choke_posthoc.json)"
+ },
+ "backtest": {
+  "check_event": "Red Sea from 11 Dec 2023 (Suez container transits -54 % over 26 weeks)",
+  "lane_26w": {
+   "realised_ln": 1.04,
+   "predicted_ln": 1.09,
+   "size": 1.05
+  },
+  "lane_52w": {
+   "realised_ln": 1.19,
+   "predicted_ln": 1.14,
+   "size": 0.96
+  },
+  "composite_26w": {
+   "realised_ln": 0.77,
+   "predicted_ln": 0.38,
+   "size": 0.5
+  },
+  "composite_52w": {
+   "realised_ln": 0.91,
+   "predicted_ln": 0.4,
+   "size": 0.44
+  },
+  "mae": {
+   "mechanism": 0.333,
+   "no_change": 0.979,
+   "chronos2": 0.587,
+   "tirex2": 0.905
+  },
+  "direction": "4 of 4",
+  "timing_weeks": 10.5,
+  "dev_cells": 6,
+  "dev_direction": 0.5,
+  "dev_note": "no development event has an exposed container lane with a transit cut: beta is not identified on 2021-23"
+ }
+}
